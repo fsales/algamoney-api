@@ -3,6 +3,6 @@ spring:
     database: MYSQL
     show-sql: true
   datasource:
-    url: jdbc:mysql://localhost/algamoneydb?createDatabaseIfNotexist=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/algamoneydb?useTimezone=true&serverTimezone=UTC&createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
     username: docker
     password: docker
