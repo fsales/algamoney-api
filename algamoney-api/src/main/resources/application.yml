@@ -1,0 +1,8 @@
+spring:
+  jpa:
+    database: MYSQL
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost/algamoneydb?createDatabaseIfNotexist=true&useSSL=false
+    username: docker
+    password: docker
