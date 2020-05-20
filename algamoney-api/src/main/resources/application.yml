@@ -1,4 +1,5 @@
 spring:
+
   jpa:
     database: MYSQL
     show-sql: true
