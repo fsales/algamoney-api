@@ -14,6 +14,12 @@
 
 ## Test Postmam
     site https://www.mocky.io/
+
+## Aulas
+
+### backend
+- [x] Primeira consultas e cadastro na API
+
   
 
 
