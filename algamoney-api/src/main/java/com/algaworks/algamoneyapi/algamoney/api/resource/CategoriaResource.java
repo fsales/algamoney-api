@@ -2,18 +2,15 @@ package com.algaworks.algamoneyapi.algamoney.api.resource;
 
 import com.algaworks.algamoneyapi.algamoney.api.event.RecursoCriadoEvent;
 import com.algaworks.algamoneyapi.algamoney.api.model.Categoria;
-import com.algaworks.algamoneyapi.algamoney.api.repository.CategoriaRepository;
+import com.algaworks.algamoneyapi.algamoney.api.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -21,20 +18,20 @@ import java.util.List;
 public class CategoriaResource {
 
     @Autowired
-    private CategoriaRepository categoriaRepository;
+    private CategoriaService categoriaService;
 
     @Autowired
     private ApplicationEventPublisher publisher;
 
     @GetMapping
     public ResponseEntity<?> listar(){
-        List<Categoria> categorias = categoriaRepository.findAll();
+        List<Categoria> categorias = categoriaService.listarTodos();
         return ResponseEntity.ok(categorias);
     }
 
     @PostMapping
     public ResponseEntity<Categoria> criar(@Valid @RequestBody  Categoria categoria, HttpServletResponse response){
-        Categoria categoriaSalva = categoriaRepository.save(categoria);
+        Categoria categoriaSalva = categoriaService.salvar(categoria);
 
         publisher.publishEvent(new RecursoCriadoEvent(this, response, categoriaSalva.getCodigo()));
 
@@ -43,7 +40,7 @@ public class CategoriaResource {
 
     @GetMapping("/{codigo}")
     public ResponseEntity<Categoria> buscarPorCodigo(@PathVariable Long codigo){
-        Categoria categoria = categoriaRepository.findOne(codigo);
+        Categoria categoria = categoriaService.consultarPorId(codigo);
         return categoria == null  ? ResponseEntity.noContent().build() : ResponseEntity.ok(categoria) ;
     }
 }
