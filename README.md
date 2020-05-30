@@ -19,6 +19,7 @@
 
 ### backend
 - [x] Primeira consultas e cadastro na API
+- [x] Atualização e remoção de recursos na API
 
   
 
