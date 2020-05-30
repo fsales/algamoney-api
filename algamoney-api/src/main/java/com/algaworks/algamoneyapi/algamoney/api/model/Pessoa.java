@@ -1,10 +1,10 @@
 package com.algaworks.algamoneyapi.algamoney.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.omg.CORBA.portable.IDLEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -30,4 +30,10 @@ public class Pessoa implements Serializable {
 
     @NotNull
     private Boolean ativo;
+
+    @JsonIgnore
+    @Transient
+    public boolean isInativo() {
+        return !this.ativo;
+    }
 }

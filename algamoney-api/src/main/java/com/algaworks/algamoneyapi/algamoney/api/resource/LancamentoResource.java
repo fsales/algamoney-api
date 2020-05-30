@@ -1,16 +1,22 @@
 package com.algaworks.algamoneyapi.algamoney.api.resource;
 
 import com.algaworks.algamoneyapi.algamoney.api.event.RecursoCriadoEvent;
+import com.algaworks.algamoneyapi.algamoney.api.exception.handler.AlgamoneyExceptionHandler;
 import com.algaworks.algamoneyapi.algamoney.api.model.Lancamento;
 import com.algaworks.algamoneyapi.algamoney.api.service.LancamentoService;
+import com.algaworks.algamoneyapi.algamoney.api.service.exception.PessoaInexistenteInativaException;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -22,6 +28,9 @@ public class LancamentoResource {
 
     @Autowired
     private ApplicationEventPublisher eventPublisher;
+
+    @Autowired
+    private MessageSource messageSource;
 
     @GetMapping
     public ResponseEntity<?> listar() {
@@ -43,5 +52,13 @@ public class LancamentoResource {
         eventPublisher.publishEvent(new RecursoCriadoEvent(this, response, lancamento.getCodigo()));
 
         return ResponseEntity.status(HttpStatus.CREATED).body(lancamento);
+    }
+
+    @ExceptionHandler({PessoaInexistenteInativaException.class})
+    public ResponseEntity<Object> handlePessoaInexistenteOuInativaException(PessoaInexistenteInativaException ex) {
+        String mensagemUsuario = messageSource.getMessage("pessoa.inexistente-ou-inativa", null, LocaleContextHolder.getLocale());
+        String mensagemDesenvolvedor = ExceptionUtils.getRootCauseMessage(ex);
+        List<AlgamoneyExceptionHandler.Erro> erros = Arrays.asList(new AlgamoneyExceptionHandler.Erro(mensagemUsuario, mensagemDesenvolvedor));
+        return ResponseEntity.badRequest().body(erros);
     }
 }
