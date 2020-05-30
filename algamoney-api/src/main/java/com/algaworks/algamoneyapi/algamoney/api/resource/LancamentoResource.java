@@ -67,4 +67,10 @@ public class LancamentoResource {
     public List<Lancamento> pesquisar(LancamentoFilter lancamentoFilter){
         return lancamentoService.pesquisar(lancamentoFilter);
     }
+
+    @DeleteMapping("/{codigo}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void remover(@PathVariable Long codigo) {
+        lancamentoService.delete(codigo);
+    }
 }

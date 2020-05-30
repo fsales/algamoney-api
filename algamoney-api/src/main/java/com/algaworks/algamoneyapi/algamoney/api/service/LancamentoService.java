@@ -49,4 +49,8 @@ public class LancamentoService {
     public List<Lancamento> pesquisar(LancamentoFilter lancamentoFilter) {
         return lancamentoRepository.filtrar(lancamentoFilter);
     }
+
+    public void delete(Long codigo) {
+        lancamentoRepository.delete(codigo);
+    }
 }
