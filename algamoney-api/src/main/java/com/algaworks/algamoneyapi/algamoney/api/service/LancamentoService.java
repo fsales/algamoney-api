@@ -2,7 +2,8 @@ package com.algaworks.algamoneyapi.algamoney.api.service;
 
 import com.algaworks.algamoneyapi.algamoney.api.model.Lancamento;
 import com.algaworks.algamoneyapi.algamoney.api.model.Pessoa;
-import com.algaworks.algamoneyapi.algamoney.api.repository.LancamentoRepository;
+import com.algaworks.algamoneyapi.algamoney.api.repository.filter.LancamentoFilter;
+import com.algaworks.algamoneyapi.algamoney.api.repository.lancamento.LancamentoRepository;
 import com.algaworks.algamoneyapi.algamoney.api.repository.PessoaRepository;
 import com.algaworks.algamoneyapi.algamoney.api.service.exception.PessoaInexistenteInativaException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,9 @@ public class LancamentoService {
 
 
         return lancamentoRepository.save(lancamento);
+    }
+
+    public List<Lancamento> pesquisar(LancamentoFilter lancamentoFilter) {
+        return lancamentoRepository.filtrar(lancamentoFilter);
     }
 }

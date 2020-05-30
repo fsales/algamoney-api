@@ -3,6 +3,7 @@ package com.algaworks.algamoneyapi.algamoney.api.resource;
 import com.algaworks.algamoneyapi.algamoney.api.event.RecursoCriadoEvent;
 import com.algaworks.algamoneyapi.algamoney.api.exception.handler.AlgamoneyExceptionHandler;
 import com.algaworks.algamoneyapi.algamoney.api.model.Lancamento;
+import com.algaworks.algamoneyapi.algamoney.api.repository.filter.LancamentoFilter;
 import com.algaworks.algamoneyapi.algamoney.api.service.LancamentoService;
 import com.algaworks.algamoneyapi.algamoney.api.service.exception.PessoaInexistenteInativaException;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -31,13 +32,13 @@ public class LancamentoResource {
 
     @Autowired
     private MessageSource messageSource;
-
+/*
     @GetMapping
     public ResponseEntity<?> listar() {
         List<Lancamento> lancamentos = lancamentoService.listarTodos();
 
         return lancamentos.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(lancamentos);
-    }
+    }*/
 
     @GetMapping("/{codigo}")
     public ResponseEntity<Lancamento> consultarPorId(@PathVariable Long codigo) {
@@ -60,5 +61,10 @@ public class LancamentoResource {
         String mensagemDesenvolvedor = ExceptionUtils.getRootCauseMessage(ex);
         List<AlgamoneyExceptionHandler.Erro> erros = Arrays.asList(new AlgamoneyExceptionHandler.Erro(mensagemUsuario, mensagemDesenvolvedor));
         return ResponseEntity.badRequest().body(erros);
+    }
+
+    GetMapping
+    public List<Lancamento> pesquisar(LancamentoFilter lancamentoFilter){
+        return lancamentoService.pesquisar(lancamentoFilter);
     }
 }
