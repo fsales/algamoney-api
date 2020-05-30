@@ -14,6 +14,12 @@ public class PessoaService {
     @Autowired
     private PessoaRepository pessoaRepository;
 
+    public void atualizarPropriedadeAtivo (Long codigo, Boolean ativo){
+        Pessoa pessoaSalva = consultarPorId(codigo);
+        pessoaSalva.setAtivo(ativo);
+        pessoaRepository.save(pessoaSalva);
+    }
+
     public Pessoa atualizar(Long codigo, Pessoa pessoa) {
         Pessoa pessoaSalva = consultarPorId(codigo);
 
