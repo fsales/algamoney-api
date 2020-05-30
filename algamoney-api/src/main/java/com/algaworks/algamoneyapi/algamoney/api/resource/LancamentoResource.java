@@ -63,7 +63,7 @@ public class LancamentoResource {
         return ResponseEntity.badRequest().body(erros);
     }
 
-    GetMapping
+    @GetMapping
     public List<Lancamento> pesquisar(LancamentoFilter lancamentoFilter){
         return lancamentoService.pesquisar(lancamentoFilter);
     }
