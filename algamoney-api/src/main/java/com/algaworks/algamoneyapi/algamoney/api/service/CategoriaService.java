@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class CategoriaService {
-    
+
     @Autowired
     private CategoriaRepository categoriaRepository;
 
