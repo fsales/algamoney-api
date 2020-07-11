@@ -5,6 +5,7 @@ import com.algaworks.algamoneyapi.algamoney.api.model.Pessoa;
 import com.algaworks.algamoneyapi.algamoney.api.repository.filter.LancamentoFilter;
 import com.algaworks.algamoneyapi.algamoney.api.repository.lancamento.LancamentoRepository;
 import com.algaworks.algamoneyapi.algamoney.api.repository.PessoaRepository;
+import com.algaworks.algamoneyapi.algamoney.api.repository.projection.LancamentoResumo;
 import com.algaworks.algamoneyapi.algamoney.api.service.exception.PessoaInexistenteInativaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -54,5 +55,9 @@ public class LancamentoService {
 
     public void delete(Long codigo) {
         lancamentoRepository.deleteById(codigo);
+    }
+
+    public Page<LancamentoResumo> resumir(LancamentoFilter lancamentoFilter, Pageable pageable) {
+        return lancamentoRepository.resumir(lancamentoFilter, pageable);
     }
 }
