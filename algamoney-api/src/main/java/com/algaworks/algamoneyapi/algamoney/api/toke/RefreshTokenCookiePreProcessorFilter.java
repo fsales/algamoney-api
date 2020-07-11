@@ -37,7 +37,7 @@ public class RefreshTokenCookiePreProcessorFilter implements Filter {
         filterChain.doFilter(req, response);
     }
 
-    static class MyServletRequestWrapper extends HttpServletRequestWrapper{ //Após extender o HttpServletRequestWrapper criar o implemento
+    static class MyServletRequestWrapper extends HttpServletRequestWrapper { //Após extender o HttpServletRequestWrapper criar o implemento
 
         private String refreshToken;
 
@@ -51,7 +51,7 @@ public class RefreshTokenCookiePreProcessorFilter implements Filter {
         public Map<String, String[]> getParameterMap() { //criar o  o getParameterMap
 
             ParameterMap<String, String[]> map = new ParameterMap<>(getRequest().getParameterMap());
-            map.put("refresh_token", new String[] { refreshToken }); //refresh_token é o nome que o spring irá buscar o token
+            map.put("refresh_token", new String[]{refreshToken}); //refresh_token é o nome que o spring irá buscar o token
             map.setLocked(true);//Trava o mapa
 
             return map;

@@ -1,0 +1,3 @@
+algamoney:
+  seguranca:
+    enable-https: true

@@ -22,7 +22,7 @@ public class Endereco implements Serializable {
 
     private String bairro;
 
-    private  String cep;
+    private String cep;
 
     private String cidade;
 

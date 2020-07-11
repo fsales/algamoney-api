@@ -3,7 +3,6 @@ package com.algaworks.algamoneyapi.algamoney.api.repository.projection;
 
 import com.algaworks.algamoneyapi.algamoney.api.model.TipoLancamento;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 

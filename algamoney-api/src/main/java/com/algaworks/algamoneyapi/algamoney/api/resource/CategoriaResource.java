@@ -26,14 +26,14 @@ public class CategoriaResource {
 
     @GetMapping
     @PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')")
-    public ResponseEntity<?> listar(){
+    public ResponseEntity<?> listar() {
         List<Categoria> categorias = categoriaService.listarTodos();
         return ResponseEntity.ok(categorias);
     }
 
     @PostMapping
     @PreAuthorize("hasAuthority('ROLE_CADASTRAR_CATEGORIA') and #oauth2.hasScope('write')")
-    public ResponseEntity<Categoria> criar(@Valid @RequestBody  Categoria categoria, HttpServletResponse response){
+    public ResponseEntity<Categoria> criar(@Valid @RequestBody Categoria categoria, HttpServletResponse response) {
         Categoria categoriaSalva = categoriaService.salvar(categoria);
 
         publisher.publishEvent(new RecursoCriadoEvent(this, response, categoriaSalva.getCodigo()));
@@ -43,8 +43,8 @@ public class CategoriaResource {
 
     @GetMapping("/{codigo}")
     @PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')")
-    public ResponseEntity<Categoria> buscarPorCodigo(@PathVariable Long codigo){
+    public ResponseEntity<Categoria> buscarPorCodigo(@PathVariable Long codigo) {
         Categoria categoria = categoriaService.consultarPorId(codigo);
-        return categoria == null  ? ResponseEntity.noContent().build() : ResponseEntity.ok(categoria) ;
+        return categoria == null ? ResponseEntity.noContent().build() : ResponseEntity.ok(categoria);
     }
 }

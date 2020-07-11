@@ -77,7 +77,7 @@ public class LancamentoResource {
 
     @GetMapping
     @PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
-    public Page<Lancamento> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable){
+    public Page<Lancamento> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable) {
         return lancamentoService.pesquisar(lancamentoFilter, pageable);
     }
 

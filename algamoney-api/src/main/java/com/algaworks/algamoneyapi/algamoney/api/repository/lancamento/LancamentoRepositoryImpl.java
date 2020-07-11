@@ -18,13 +18,13 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LancamentoRepositoryImpl implements  LancamentoRepositoryQuery {
+public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
 
     @PersistenceContext
     private EntityManager manager;
 
     @Override
-    public Page<Lancamento> filtrar(LancamentoFilter lancamentoFilter,  Pageable pageable) {
+    public Page<Lancamento> filtrar(LancamentoFilter lancamentoFilter, Pageable pageable) {
 
         CriteriaBuilder builder = manager.getCriteriaBuilder();
         CriteriaQuery<Lancamento> criteriaQuery = builder.createQuery(Lancamento.class);
