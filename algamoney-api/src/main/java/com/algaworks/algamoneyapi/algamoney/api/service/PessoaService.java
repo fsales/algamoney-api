@@ -28,7 +28,7 @@ public class PessoaService {
     }
 
     public Pessoa consultarPorId(Long codigo) {
-        Pessoa pessoaSalva = pessoaRepository.findOne(codigo);
+        Pessoa pessoaSalva = pessoaRepository.getOne(codigo);
         if (pessoaSalva == null) {
             throw new EmptyResultDataAccessException(1);
         }
@@ -40,7 +40,8 @@ public class PessoaService {
     }
 
     public void deletar(Long codigo) {
-        pessoaRepository.delete(codigo);
+        pessoaRepository.deleteById(codigo);
+
     }
 
     public Pessoa salvar(Pessoa pessoa) {

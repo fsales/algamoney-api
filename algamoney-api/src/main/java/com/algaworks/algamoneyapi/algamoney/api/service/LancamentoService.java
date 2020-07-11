@@ -28,7 +28,7 @@ public class LancamentoService {
     }
 
     public Lancamento consultarPorId(Long codigo) {
-        Lancamento lancamento = lancamentoRepository.findOne(codigo);
+        Lancamento lancamento = lancamentoRepository.getOne(codigo);
 
         if (lancamento == null) {
             throw new EmptyResultDataAccessException(1);
@@ -38,7 +38,7 @@ public class LancamentoService {
     }
 
     public Lancamento salvar(Lancamento lancamento) {
-        Pessoa pessoa = pessoaRepository.findOne(lancamento.getPessoa().getCodigo());
+        Pessoa pessoa = pessoaRepository.getOne(lancamento.getPessoa().getCodigo());
 
         if (pessoa == null || pessoa.isInativo()) {
             throw new PessoaInexistenteInativaException();
@@ -53,6 +53,6 @@ public class LancamentoService {
     }
 
     public void delete(Long codigo) {
-        lancamentoRepository.delete(codigo);
+        lancamentoRepository.deleteById(codigo);
     }
 }

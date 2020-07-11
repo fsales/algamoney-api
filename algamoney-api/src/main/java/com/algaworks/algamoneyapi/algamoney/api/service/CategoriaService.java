@@ -24,7 +24,7 @@ public class CategoriaService {
     }
 
     public Categoria consultarPorId(Long codigo) {
-        Categoria categoria = categoriaRepository.findOne(codigo);
+        Categoria categoria = categoriaRepository.getOne(codigo);
         if (categoria == null) {
             throw new EmptyResultDataAccessException(1);
         }
