@@ -1,0 +1,16 @@
+spring:
+
+  jpa:
+    database: MYSQL
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://db:3306/algamoneydb?useTimezone=true&serverTimezone=UTC&createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: docker
+    password: docker
+
+  jackson:
+    date-format: yyyy-MM-dd
+
+algamoney:
+  seguranca:
+    enable-https: false
