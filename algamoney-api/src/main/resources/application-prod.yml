@@ -1,3 +1,13 @@
 algamoney:
   seguranca:
     enable-https: true
+
+
+spring:
+  jpa:
+    database: MYSQL
+    show-sql: false
+  datasource:
+    url: ${JDBC_DATA_BASE_URL}
+    username: ${JDBC_DATA_USER_NAME}
+    password: ${JDBC_DATA_PASSWORD}
