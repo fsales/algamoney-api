@@ -18,7 +18,7 @@ services:
     image: algamoney-api
     restart: always
     build: 
-      context: algamoney-api
+      context: .
       dockerfile: Dockerfile
     # working_dir: /app
     environment: 
