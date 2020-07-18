@@ -1,4 +1,4 @@
-package com.algaworks.algamoneyapi.algamoney.api.toke;
+package com.algaworks.algamoneyapi.algamoney.api.token;
 
 import org.apache.catalina.util.ParameterMap;
 import org.springframework.core.Ordered;
@@ -39,7 +39,7 @@ public class RefreshTokenCookiePreProcessorFilter implements Filter {
 
     static class MyServletRequestWrapper extends HttpServletRequestWrapper { //Após extender o HttpServletRequestWrapper criar o implemento
 
-        private String refreshToken;
+        private final String refreshToken;
 
         public MyServletRequestWrapper(HttpServletRequest request, String refreshToken) {
             super(request);

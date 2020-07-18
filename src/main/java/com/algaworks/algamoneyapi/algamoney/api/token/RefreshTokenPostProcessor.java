@@ -1,4 +1,4 @@
-package com.algaworks.algamoneyapi.algamoney.api.toke;
+package com.algaworks.algamoneyapi.algamoney.api.token;
 
 import com.algaworks.algamoneyapi.algamoney.api.config.property.AlgamoneyApiProperty;
 import org.springframework.beans.factory.annotation.Autowired;
