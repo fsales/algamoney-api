@@ -50,7 +50,7 @@ public class Lancamento {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "codigo_pessoa")
-    private Pessoa pessoa;
+    private  Pessoa pessoa;
 
 
 }
