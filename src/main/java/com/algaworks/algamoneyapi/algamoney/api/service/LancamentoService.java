@@ -7,6 +7,7 @@ import com.algaworks.algamoneyapi.algamoney.api.repository.filter.LancamentoFilt
 import com.algaworks.algamoneyapi.algamoney.api.repository.lancamento.LancamentoRepository;
 import com.algaworks.algamoneyapi.algamoney.api.repository.projection.LancamentoResumo;
 import com.algaworks.algamoneyapi.algamoney.api.service.exception.PessoaInexistenteInativaException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -39,14 +40,33 @@ public class LancamentoService {
     }
 
     public Lancamento salvar(Lancamento lancamento) {
-        Pessoa pessoa = pessoaRepository.getOne(lancamento.getPessoa().getCodigo());
-
-        if (pessoa == null || pessoa.isInativo()) {
-            throw new PessoaInexistenteInativaException();
-        }
-
+       validaPessoa(lancamento);
 
         return lancamentoRepository.save(lancamento);
+    }
+
+    public Lancamento atualizar(Long codigo, Lancamento lancamento) {
+        Lancamento lancamentoExistente = lancamentoRepository.getOne(codigo);
+
+        if(lancamento.getPessoa().equals(lancamentoExistente.getPessoa())){
+            validaPessoa(lancamento);
+        }
+
+        BeanUtils.copyProperties(lancamento, lancamentoExistente, "codigo");
+
+        return lancamentoRepository.save(lancamentoExistente);
+    }
+
+    private void validaPessoa(Lancamento lancamento) {
+
+        Pessoa pesssoa = null;
+        if (lancamento.getPessoa().getCodigo() != null){
+            pesssoa = pessoaRepository.getOne(lancamento.getPessoa().getCodigo());
+        }
+
+        if(pesssoa == null || pesssoa.isInativo()){
+            throw  new PessoaInexistenteInativaException();
+        }
     }
 
     public Page<Lancamento> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable) {
