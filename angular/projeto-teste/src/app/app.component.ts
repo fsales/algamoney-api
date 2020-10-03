@@ -10,12 +10,8 @@ export class AppComponent {
 
   nome = '';
 
-  adicinar(nome: string){
-    this.nome = nome;
+  adicinar(){
     console.log(`Adicionando ${this.nome}`);
   }
 
-  alterarNome(event: any){
-    this.nome = event.target.value;
-  }
 }

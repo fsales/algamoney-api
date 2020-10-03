@@ -12,12 +12,11 @@
             <label>Nome</label>
             <input type="text" 
                    class="form-control"
-                   (input)="alterarNome($event)"
-                   [value]="nome" >
+                   [(ngModel)]="nome" >
         </div>
         <button type="button" 
                 class="btn btn-primary"
-                (click)="adicinar(nomeInput.value)"
+                (click)="adicinar()"
                 [disabled]="nome.length == 0">Adicinar</button>
       </div>
 
