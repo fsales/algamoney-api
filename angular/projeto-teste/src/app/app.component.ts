@@ -10,7 +10,8 @@ export class AppComponent {
 
   nome = 'teste';
 
-  adicinar(){
+  adicinar(nome: string){
+    this.nome = nome;
     console.log(`Adicionando ${this.nome}`);
   }
 
