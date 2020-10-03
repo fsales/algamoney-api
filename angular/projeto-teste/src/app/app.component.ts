@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'projeto-teste';
 
-  nome = 'teste';
+  nome = '';
 
   adicinar(nome: string){
     this.nome = nome;
