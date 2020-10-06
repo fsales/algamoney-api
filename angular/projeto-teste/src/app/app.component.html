@@ -4,7 +4,9 @@
         <p class="lead"><app-bem-vindo></app-bem-vindo></p>
         <hr class="my-4">
         
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success" 
+             role="alert"
+             *ngIf="adicionado" >
             Funcionário adicionado: {{nome}}
         </div>
 
@@ -12,13 +14,28 @@
             <label>Nome</label>
             <input type="text" 
                    class="form-control"
-                   [(ngModel)]="nome" >
+                   [(ngModel)]="nome" 
+                   (focus)="adicionado = false">
         </div>
         <button type="button" 
                 class="btn btn-primary"
                 (click)="adicinar()"
                 [disabled]="nome.length == 0">Adicinar</button>
-      </div>
+
+        
+        <div class="row" style="margin-top: 20px;" >
+
+            <div class="col-2" *ngFor="let funcionario of funcionarios">
+                <div class="card">
+                    <img src="https://randomuser.me/api/portraits/women/{{funcionario.id}}.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{funcionario.nome}}</h5>                
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </div>
 
