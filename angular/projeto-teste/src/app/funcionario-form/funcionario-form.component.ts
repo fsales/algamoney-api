@@ -11,7 +11,7 @@ export class FuncionarioFormComponent implements OnInit {
   nome = '';
   adicionado = false;
 
-  @Output() funcionarioAdicionado = new EventEmitter();
+  @Output('criado') funcionarioAdicionado = new EventEmitter();
 
 
   ngOnInit(): void {
