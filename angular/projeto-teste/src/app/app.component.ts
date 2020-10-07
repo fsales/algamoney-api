@@ -6,20 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'projeto-teste';
-  ultimoId = 0;
-  nome = '';
-  adicionado = false;
   funcionarios = [];
 
-  adicinar(){
-    this.adicionado = true;
-    console.log(`Adicionando ${this.nome}`);
-
-    this.funcionarios.push({
-      nome: this.nome,
-      id: ++this.ultimoId
-    });
+  adicionar(funcionario){
+    this.funcionarios.push(funcionario);
   }
-
 }
