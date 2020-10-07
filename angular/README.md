@@ -62,11 +62,29 @@
     ```sh
       $ [(ngModel)]="nome"
     ```
+* Diretivas
+    Componentes
+    ```sh
+      $ <lista-pessoas><lista-pessoas/>
+    ```
+
+    Estrutural
+    ```sh
+      $ <h2 *ngIf="logado">Olá {{nomeUsuario}}</h2>
+    ```
+
+    Diretivas de atributos
+    ```sh
+      $ <h2 [style.color]="red">Olá {{nomeUsuario}}</h2>
+
+      $ <h2 atencao>Olá {{nomeUsuario}}</h2>
+    ```
 
 
 ### Frontend
 - [x] Instalando e criando projeto
 - [X] Data binding
+- [x] Introdução às diretivas
 
 
   
