@@ -3,9 +3,18 @@
         <h1 class="display-4"><app-hello></app-hello></h1>
         <p class="lead"><app-bem-vindo></app-bem-vindo></p>
         <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-      </div>
+        
+        <app-funcionario-form (criado)="adicionar($event)" ></app-funcionario-form>
+
+        <div class="row" style="margin-top: 20px;" >
+
+            <div class="col-2" *ngFor="let f of funcionarios">
+               <app-funcionario-card [obj] ="f" ></app-funcionario-card>
+            </div>
+
+        </div>
+    </div>
+
 </div>
 
 
