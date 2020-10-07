@@ -22,4 +22,13 @@ export class FuncionarioCardComponent implements OnInit {
         backgroundColor: this.funcionario.id % 2 === 0 ?'lightblue' : 'lightgreen'
     };
   }
+
+  estiloClassCardTitle(){
+
+    return ['badge', 'badge-secondary'];
+  }
+
+  isAdmin(){
+    return this.funcionario.nome.startsWith('T');
+  }
 }
