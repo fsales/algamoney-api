@@ -15,4 +15,11 @@ export class FuncionarioCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  estiloCartao(){
+
+    return { 
+        'border-width': `${this.funcionario.id} px` ,
+        backgroundColor: this.funcionario.id % 2 === 0 ?'lightblue' : 'lightgreen'
+    };
+  }
 }
