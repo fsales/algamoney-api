@@ -8,9 +8,9 @@ describe('BemVindoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BemVindoComponent ]
+      declarations: [BemVindoComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
