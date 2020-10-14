@@ -2,7 +2,11 @@
 
 
 #  Angular CLI
-* Instalação [Angular CLI](https://cli.angular.io/)
+* Instalação 
+  [Angular CLI](https://cli.angular.io/)
+  [Angular Material](https://material.angular.io/)
+  [PrimeNG](https://www.primefaces.org/primeng/)
+
 * Verificar versão
   
    ```sh
