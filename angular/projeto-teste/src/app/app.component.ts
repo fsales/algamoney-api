@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   funcionarios = [];
 
-  adicionar(funcionario){
+  adicionar(funcionario) {
     this.funcionarios.push(funcionario);
   }
 }

@@ -9,26 +9,26 @@ export class FuncionarioCardComponent implements OnInit {
 
   @Input('obj') funcionario: any;
 
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit(): void {
   }
 
-  estiloCartao(){
+  estiloCartao() {
 
-    return { 
-        'border-width': `${this.funcionario.id} px` ,
-        backgroundColor: this.funcionario.id % 2 === 0 ?'lightblue' : 'lightgreen'
+    return {
+      'border-width': `${this.funcionario.id} px`,
+      backgroundColor: this.funcionario.id % 2 === 0 ? 'lightblue' : 'lightgreen'
     };
   }
 
-  estiloClassCardTitle(){
+  estiloClassCardTitle() {
 
     return ['badge', 'badge-secondary'];
   }
 
-  isAdmin(){
+  isAdmin() {
     return this.funcionario.nome.startsWith('T');
   }
 }
